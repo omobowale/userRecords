@@ -15,10 +15,7 @@ class CitizenReportController extends Controller
         $numberOfCitizens = count(Citizen::all());
         $states = State::all();
         $lgas = Lga::all();
-        $wards = Ward::all();
-        $numberOfCitizenInState = 0;
-        $numberOfCitizenInLga = 0;
-        $numberOfCitizenInWard = 0;
+        $allwards = Ward::all();
         $stateNum = 0;
         $lgaNum = 0;
         $wardNum = 0;
@@ -47,11 +44,11 @@ class CitizenReportController extends Controller
 
         if($request->has('ward')){
             $numberOfCitizenInWard = Ward::find($request->input('ward'));
-            $wardNum = count($numberOfCitizenInWard->citizens);       
+            $wardNum = count($numberOfCitizenInWard->citizens);     
         }
     
 
-        return view("citizen_report")->with(["numberOfCitizens" => $numberOfCitizens, "numberOfFilteredCitizensForState" => $stateNum, "numberOfFilteredCitizensForLga" => $lgaNum, "numberOfFilteredCitizensForWard" => $wardNum, "states" => $states, "wards" => $wards, "lgas" => $lgas]);
+        return view("citizen_report")->with(["numberOfCitizens" => $numberOfCitizens, "numberOfFilteredCitizensForState" => $stateNum, "numberOfFilteredCitizensForLga" => $lgaNum, "numberOfFilteredCitizensForWard" => $wardNum, "states" => $states, "wards" => $allwards, "lgas" => $lgas]);
     }
     
 }
