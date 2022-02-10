@@ -69,6 +69,6 @@ Route::post('/register_citizen', [CitizenController::class, 'store'])
                 ->middleware('auth')
                 ->name('register_citizen');
 
-Route::post('/filter_citizen', [CitizenReportController::class, 'filter'])
+Route::post('/citizen_report', [CitizenReportController::class, 'index'])
                 ->middleware('auth')
-                ->name('filter_citizen');
+                ->name('citizen_report');
